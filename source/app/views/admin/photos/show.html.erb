@@ -1,0 +1,43 @@
+<h1>Photo <small>view</small></h1>
+<div class="clearfix">
+	<div class="pull-right">
+		<%= link_to 'Modify', edit_admin_photo_path(@photo, :album_id => @album_id), {:class=>'btn btn-primary'} %>
+		<%= link_to 'Back', admin_photos_path(:album_id => @album_id), {:class=>'btn btn-primary'} %>
+	</div>
+</div>
+<div class="table-responsive">
+	<div class="row">
+		<div class="col-lg-12">
+			<% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
+			<table class="table table-hover table-bordered">
+			<tbody>
+			<tr>
+				<th class="col-lg-3"><%= label_tag nil, "Album", class: "pull-right" %></th>
+				<td class="col-lg-5"><%= @photo.album.title %></td>
+			</tr>
+			<tr>
+				<th class="col-lg-3"><%= label_tag nil, "Title", class: "pull-right" %></th>
+				<td class="col-lg-5"><%= @photo.title%></td>
+			</tr>
+			<tr>
+				<th class="col-lg-3"><%= label_tag nil, "Photo", class: "pull-right" %></th>
+				<td class="col-lg-5">
+					<% if @photo.photo_name? %>
+						<img src="<%= '' + @photo.photo_name.url(:thumb) + '' %>"><br/>
+						<a href="<%= @photo.photo_name.url(:medium) %>" target="_blank">
+							<%= @photo.photo_name.url(:medium) %><br/>
+						</a>
+						<a href="<%= @photo.photo_name.url(:large) %>" target="_blank">
+							<%= @photo.photo_name.url(:large) %><br/>
+						</a>
+						<a href="<%= @photo.photo_name.url(:xlarge) %>" target="_blank">
+							<%= @photo.photo_name.url(:xlarge) %>
+						</a>
+					<% end %>
+				</td>
+			</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+</div>

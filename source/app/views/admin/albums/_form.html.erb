@@ -1,0 +1,29 @@
+<%= form_for([:admin, @album], html: {class: "form-horizontal", :multiple => true}) do |f| %>
+    <% if @album.errors.any? %>
+    <div class="error-div">
+        <div class="alert alert-error">
+        <% @album.errors.each do |label, msg| %>
+            <%= msg %><br />
+        <% end %>
+        </div>
+    </div>
+    <% end %>
+    <div class="form-group">
+        <%= f.label :title, "Title", class: "col-lg-3 control-label" %>
+        <div class="col-lg-5"><%= f.text_field :title, class:"form-control" %></div>
+    </div>
+    <div class="form-group">
+        <%= f.label :title, "Image", class: "col-lg-3 control-label" %>
+        <div class="col-lg-5">
+            <%= f.file_field :album_photo %>
+            <% if @album.album_photo? %>
+                <img src="<%= '' + @album.album_photo.url(:thumb) + '' %>">
+                <img src="<%= '' + @album.album_photo.url(:medium) + '' %>">
+                <img src="<%= '' + @album.album_photo.url(:large) + '' %>">
+            <% end %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-3 col-lg-10"><%= f.submit "Submit", class:"btn btn-primary" %></div>
+    </div>
+<% end %>

@@ -1,0 +1,11 @@
+<div class="login-wrap">
+	<%= form_tag("/admin/login/index", method:"post", class:"form-signin") do %>
+		<h2 class="form-signin-heading">请登录</h2>
+		<%= text_field_tag(:user_name, nil, {class:"form-control", placeholder:"用户名", autofocus:""}) %>
+		<% if flash[:notice] %>
+		<div class="alert alert-danger"><%= flash[:notice] %></div>
+		<% end %>
+		<%= password_field_tag(:user_pass, nil, {class:"form-control", placeholder:"密码", autofocus:""}) %>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
+	<% end %>
+</div>

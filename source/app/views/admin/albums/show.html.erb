@@ -1,0 +1,36 @@
+<h1>Album <small>view</small></h1>
+<div class="clearfix">
+	<div class="pull-right">
+		<%= link_to 'Modify', edit_admin_album_path(@album), {:class=>'btn btn-primary'} %>
+		<%= link_to 'Back', admin_albums_path, {:class=>'btn btn-primary'} %>
+	</div>
+</div>
+<div class="table-responsive">
+	<div class="row">
+		<div class="col-lg-12">
+			<% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
+			<table class="table table-hover table-bordered">
+			<tbody>
+			<tr>
+				<th class="col-lg-3"><%= label_tag nil, "User Name", class: "pull-right" %></th>
+				<td class="col-lg-5"><%= @album.title %></td>
+			</tr>
+			<tr>
+				<th class="col-lg-3"><%= label_tag nil, "User Passowrd", class: "pull-right" %></th>
+				<td class="col-lg-5">
+					<% if @album.album_photo? %>
+					<img src="<%= '' + @album.album_photo.url(:thumb) + '' %>"><br/>
+					<a href="<%= @album.album_photo.url(:medium) %>" target="_blank">
+						<%= @album.album_photo.url(:medium) %><br/>
+					</a>
+					<a href="<%= @album.album_photo.url(:large) %>" target="_blank">
+						<%= @album.album_photo.url(:large) %><br/>
+					</a>
+					<% end %>
+				</td>
+			</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+</div>

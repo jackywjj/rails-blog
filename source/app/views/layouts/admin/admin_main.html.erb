@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Jacky's Blog Backend Management</title>
+  <%= javascript_include_tag "application" %> 
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "admin/main" %>
+  <%= stylesheet_link_tag "admin/pagination" %>
+  <script type="text/javascript" src="/javascripts/admin/main.js"></script>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="wrapper">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/admin/">Jacky's Blog Backend Management</a>
+		</div>
+		<a class="navbar-brand navbar-link pull-right" href="/admin/login/logout/">Logout</a>
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav side-nav">
+				<li <%= (controller.controller_name=='dashboard') ? 'class=active' : ''%> >
+					<a href="<%=admin_dashboard_path %>"><i class="fa fa-dashboard"></i> Dashboard</a>
+				</li>
+				<li <%= (controller.controller_name=='categories') ? 'class=active' : ''%> >
+					<a href="<%=admin_categories_path %>"><i class="fa fa-bar-chart-o"></i> Categories</a>
+				</li>
+				<li <%= (controller.controller_name=='posts') ? 'class=active' : ''%> >
+					<a href="<%=admin_posts_path %>"><i class="fa fa-table"></i> Essays</a>
+				</li>
+				<li <%= (controller.controller_name=='albums') ? 'class=active' : ''%> >
+					<a href="<%=admin_albums_path %>"><i class="fa fa-edit"></i> Albums</a>
+				</li>
+				<li <%= (controller.controller_name=='photos') ? 'class=active' : ''%> >
+					<a href="<%=admin_photos_path %>"><i class="fa fa-font"></i> Photos</a>
+				</li>
+				<li <%= (controller.controller_name=='users') ? 'class=active' : ''%> >
+					<a href="<%=admin_users_path %>"><i class="fa fa-desktop"></i> Users</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	  
+	<div id="page-wrapper">
+		 <div class="row content-body">
+			<div class="col-lg-12">
+				<%= yield %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">All Rights Reserved &copy; www.jacky-wu.com</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

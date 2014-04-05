@@ -1,0 +1,43 @@
+<%= form_for([:admin, @photo], html: {class: "form-horizontal", :multiple => true}) do |f| %>
+  <% if @photo.errors.any? %>
+  <div class="error-div">
+    <div class="alert alert-error">
+    <% @photo.errors.each do |label, msg| %>
+      <%= msg %><br />
+    <% end %>
+    </div>
+  </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :title, "Album", class: "col-lg-3 control-label" %>
+    <div class="col-lg-3">
+      <%= f.collection_select(:album_id, 
+          Album.all, :id, :title, {:prompt => false}, {:class => "form-control"}) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :title, "Title", class: "col-lg-3 control-label" %>
+    <div class="col-lg-3"><%= f.text_field :title, class:"form-control" %></div>
+  </div>
+  <div class="form-group">
+      <%= f.label :title, "Image", class: "col-lg-3 control-label" %>
+      <div class="col-lg-6">
+          <%= f.file_field :photo_name %>
+          <% if @photo.photo_name? %>
+              <img src="<%= '' + @photo.photo_name.url(:thumb) + '' %>"><br />
+              <a href="<%= @photo.photo_name.url(:medium) %>" target="_blank">
+                      <%= @photo.photo_name.url(:medium) %><br/>
+                  </a>
+                  <a href="<%= @photo.photo_name.url(:large) %>" target="_blank">
+                      <%= @photo.photo_name.url(:large) %><br/>
+                  </a>
+                  <a href="<%= @photo.photo_name.url(:xlarge) %>" target="_blank">
+                      <%= @photo.photo_name.url(:xlarge) %>
+                  </a>
+          <% end %>
+      </div>
+  </div>
+  <div class="form-group">
+      <div class="col-lg-offset-3 col-lg-6"><%= f.submit "Submit", class:"btn btn-primary" %></div>
+  </div>
+<% end %>

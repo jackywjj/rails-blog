@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%= render "partial/header" %>
+</head>
+<body>
+<div id="content-wrap" class="container">
+	<div class="row">
+		<%= render "partial/page_top" %>
+		<div class="col-md-5">
+			<div id="page-nav" class="pull-right">
+				<ul>
+					<li class="red">
+						<a href="/" class="active">
+							<div class="page-nav-icon"><img src="/images/icon-home.png" alt="博客" title="博客" /></div>
+							<div class="page-nav-menutext">博客</div>
+						</a>
+					</li>
+					<li class="blue">
+						<a href="/album/">
+							<div class="page-nav-icon"><img src="/images/icon-album.png" alt="相册" title="相册" /></div>
+							<div class="page-nav-menutext">相册</div>
+						</a>
+					</li>
+					<li class="green">
+						<a href="/aboutme/">
+							<div class="page-nav-icon"><img src="/images/icon-gear.png" alt="关于我" title="关于我" /></div>
+							<div class="page-nav-menutext">关于我</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 page-nav-menu-red">
+			<div class="page-crumbmenu">博客</div>
+		</div>
+	</div>
+	<%= yield %>
+	<%= render "partial/footer" %>
+</div>
+</body>
+</html>

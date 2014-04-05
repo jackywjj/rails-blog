@@ -1,0 +1,31 @@
+<div class="row page-content">
+	<div class="col-md-9">
+		<div class="post-block">
+			<div class="substrate widget">
+				<div class="album-wrap clearfix">
+					<ul>
+						<% @photos.each do |photo| %>
+						<li>
+							<a class="fancybox" rel="gallery1" href="<%= '' + photo.photo_name.url(:xlarge) + '' %>">
+								<img src="<%= '' + photo.photo_name.url(:thumb) + '' %>">
+							</a>
+						</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="post-block">
+			<div class="substrate widget">
+				<h3>相册</h3>
+				<ul>
+					<% @albums.each do |album| %>
+					<li><a href="/album/<%= album.id%>/" class="album-links"><%= album.title%></a></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

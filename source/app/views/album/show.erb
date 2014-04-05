@@ -1,0 +1,27 @@
+<div class="row page-content">
+	<div class="col-md-12">
+		<div class="post-block">
+			<div class="substrate widget">
+				<h2 class="post-meta-fix"><a href="/blog/<%= @album.title %>/"><%= @album.title %></a></h2>
+				<div class="post-meta last-meta post-meta-fix">
+					发表于 ：<%= @album.created_at.strftime("%Y-%m-%d") %>
+					<div class="post-backbtn"><a href="/album/">返回</a></div>
+				</div>
+				<div id="gallery" class="ad-gallery">
+					<div class="ad-image-wrapper"></div>
+					<div class="ad-nav">
+						<div class="ad-thumbs">
+							<ul class="ad-thumb-list">
+								<% @photos.each do |photo| %>
+								<li>
+									<a href="<%= '' + photo.photo_name.url(:large) + '' %>"><img src="<%= '' + photo.photo_name.url(:thumb) + '' %>"></a>
+								</li>
+								<% end %>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

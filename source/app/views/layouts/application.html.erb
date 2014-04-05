@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Jblog</title>
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "style" %>
+</head>
+<body>
+<div id="content-wrap" class="container">
+<div class="row">
+	<div class="col-md-7 page-title-wrap">
+		<h2><a href="/">小镇树妖的IT实验室</a></h2>
+		<div class="page-subtitle"><em>Focus on Java, Android, Python, Linux &amp; FreeBSD</em></div>
+	</div>
+	<div class="col-md-5">
+		<div id="page-nav" class="pull-right">
+			<ul>
+				<li class="red">
+					<a href="/" class="active">
+						<div class="page-nav-icon"><img src="/images/icon-home.png"></div>
+						<div class="page-nav-menutext">博客</div>
+					</a>
+				</li>
+				<li class="blue">
+					<a href="/album/">
+						<div class="page-nav-icon"><img src="/images/icon-album.png"></div>
+						<div class="page-nav-menutext">相册</div>
+					</a>
+				</li>
+				<li class="green">
+					<a href="/aboutme/">
+						<div class="page-nav-icon"><img src="/images/icon-gear.png"></div>
+						<div class="page-nav-menutext">关于我</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 page-nav-menu-red">
+		<div class="page-crumbmenu">博客</div>
+	</div>
+</div>
+<%= yield %>
+<div class="footer">
+	<p>All Rights Reserved &copy; www.jacky-wu.com</p>
+</div>
+</div>
+</body>
+</html>

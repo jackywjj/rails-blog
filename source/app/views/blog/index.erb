@@ -1,0 +1,46 @@
+<div class="row page-content">
+	<div class="col-md-9">
+		<% @posts.each do |post| %>
+		<div class="post-block">
+			<article class="post substrate">
+				<h3><a href="/blog/<%= post.id%>/"><%= post.title%></a></h3>
+				<div class="post-meta last-meta">发表于 ：<%= post.created_at.strftime("%Y-%m-%d") %></div>
+				<div class="post-desc-wrap clearfix">
+					<% if post.post_image? %>
+					<div class="post-desc-left">
+	            		<img class="blog-image" alt="<%= post.title%>" title ="<%= post.title%>" src="<%= '' + post.post_image.url(:medium) + '' %>" />
+					</div>
+					<div class="post-desc-right">
+						<%= markdown(post.summary.html_safe())%>
+					</div>
+					<% else %>
+					<%= markdown(post.summary.html_safe())%>
+					<% end %>
+				</div>
+			</article>
+		</div>
+		<% end %>
+	</div>
+	<div class="col-md-3">
+		<div class="post-block">
+			<div class="substrate widget">
+				<h3>分类</h3>
+				<ul>
+					<% @categories.each do |category| %>
+					<li><a title="<%= category.title %>" href="/blog/category/<%= category.id %>"><%= category.title %></a></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div class="post-block">
+			<div class="substrate widget">
+				<h3>归档</h3>
+				<ul>
+					<% @dates.each do |date| %>
+					<li><a title="<%= date.created_month%>" href="/blog/archive/<%= date.created_month %>"><%= date.created_month%></a></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
